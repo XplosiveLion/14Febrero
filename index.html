@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Día del Amor y la Amistad!</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            background: #FFE5B4;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden; /* Permitir scroll vertical */
+        }
+
+        .header {
+            background: linear-gradient(45deg, #FFB6C1, #DDA0DD, #FFDAB9);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #FFFFFF;
+            text-shadow: 2px 2px 4px #9370DB;
+            font-size: 2.5em;
+        }
+
+        .seccion {
+          background: rgba(255, 255, 255, 0.9);
+          padding: 20px;
+          border-radius: 15px;
+          margin: 20px 0;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Estilos del carrusel */
+      .carrusel-container {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    .carrusel {
+        display: flex;
+        width: 200%; /* Se duplica el ancho para el bucle */
+        animation: desplazar 20s linear infinite;
+    }
+    
+    .carrusel img {
+        width: auto;
+        height: 300px;
+        cursor: pointer;
+        transition: transform 0.3s;
+        margin: 5px;
+    }
+    
+    .carrusel img:hover {
+        transform: scale(1.1);
+    }
+    
+    /* Animación infinita */
+    @keyframes desplazar {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); } /* Solo movemos la mitad */
+    }
+    
+
+      /* Estilos para agrandar la imagen */
+      .imagen-ampliada {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) scale(1);
+          max-width: 90vw;
+          max-height: 90vh;
+          z-index: 1000;
+          border-radius: 15px;
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+          display: none;
+      }
+
+      .overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.7);
+          display: none;
+          z-index: 999;
+      }
+
+        .personajes {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .personaje {
+            width: 200px;
+            height: 200px;
+            border-radius: 15px;
+            background-size: cover;
+            transition: transform 0.3s;
+        }
+
+        .personaje:hover {
+            transform: scale(1.1);
+        }
+
+        .carta {
+            position: relative;
+            width: 90%;
+            max-width: 400px;
+            margin: 50px auto;
+            perspective: 1000px;
+            cursor: pointer;
+            font-size: 35px;
+        }
+
+        .cont {
+            align-items: center;
+            height: 300px;
+        }
+
+        .carta .carta-cerrada,
+        .carta .carta-abierta {
+            position: absolute;
+            width: 100%;
+            background: #FFDAB9;
+            border: 5px solid #FF69B4;
+            border-radius: 15px;
+            backface-visibility: hidden;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .carta .carta-cerrada {
+            background: #FF69B4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            height: 200px;
+        }
+
+        .carta .carta-abierta {
+            transform: rotateY(180deg);
+            font-size: 18px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            height: auto;
+            padding: 5px;
+        }
+
+        .carta.abierta .carta-cerrada {
+            transform: rotateY(180deg);
+        }
+
+        .carta.abierta .carta-abierta {
+            transform: rotateY(0deg);
+        }
+
+        /* Animación de entrada */
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mensaje-final {
+            animation: aparecer 1s ease-out;
+        }
+
+        
+
+        .flor-container, .corazon-container, .brillo-container {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          pointer-events: none;
+      }
+
+      .flor, .corazon, .brillo {
+          position: absolute;
+          animation: flotar 10s infinite linear;
+      }
+
+      .flor {
+          width: 50px;
+          height: 50px;
+      }
+
+      .petalos {
+          position: absolute;
+          width: 20px;
+          height: 40px;
+          background: radial-gradient(circle, #FF69B4 30%, #FF1493 90%);
+          border-radius: 50%;
+      }
+
+      .petalos:nth-child(1) { transform: rotate(0deg) translateY(-15px); }
+      .petalos:nth-child(2) { transform: rotate(72deg) translateY(-15px); }
+      .petalos:nth-child(3) { transform: rotate(144deg) translateY(-15px); }
+      .petalos:nth-child(4) { transform: rotate(216deg) translateY(-15px); }
+      .petalos:nth-child(5) { transform: rotate(288deg) translateY(-15px); }
+
+      .centro {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 15px;
+          height: 15px;
+          background: radial-gradient(circle, #FFD700 30%, #FFA500 90%);
+          border-radius: 50%;
+      }
+
+      .corazon {
+          width: 30px;
+          height: 30px;
+          background: red;
+          clip-path: polygon(50% 15%, 90% 0%, 100% 30%, 50% 100%, 0% 30%, 10% 0%);
+      }
+
+      .brillo {
+          width: 20px;
+          height: 20px;
+          background: gold;
+          border-radius: 50%;
+          box-shadow: 0 0 10px gold;
+      }
+
+      @keyframes flotar {
+          0% { transform: translateY(100vh) scale(0.5); opacity: 1; }
+          100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+      }
+    </style>
+    <script>
+        function abrirCarta() {
+            const carta = document.querySelector('.carta');
+            carta.classList.toggle('abierta');
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+          const florContainer = document.querySelector(".flor-container");
+          const corazonContainer = document.querySelector(".corazon-container");
+          const brilloContainer = document.querySelector(".brillo-container");
+
+          function crearElemento(tipo, clase, contenedor) {
+              const elemento = document.createElement("div");
+              elemento.classList.add(clase);
+              elemento.style.left = Math.random() * 100 + "vw";
+              elemento.style.animationDuration = (Math.random() * 5 + 5) + "s";
+              contenedor.appendChild(elemento);
+              setTimeout(() => elemento.remove(), 10000);
+              return elemento;
+          }
+
+          function crearFlor() {
+              const flor = crearElemento("div", "flor", florContainer);
+              for (let j = 0; j < 5; j++) {
+                  const petalo = document.createElement("div");
+                  petalo.classList.add("petalos");
+                  flor.appendChild(petalo);
+              }
+              const centro = document.createElement("div");
+              centro.classList.add("centro");
+              flor.appendChild(centro);
+          }
+
+          function crearCorazon() {
+              crearElemento("div", "corazon", corazonContainer);
+          }
+
+          function crearBrillo() {
+              crearElemento("div", "brillo", brilloContainer);
+          }
+
+          setInterval(crearFlor, 500);
+          setInterval(crearCorazon, 700);
+          setInterval(crearBrillo, 1000);
+      });
+
+
+      document.querySelectorAll(".carrusel img").forEach(img => {
+        img.addEventListener("click", function() {
+            const imagenGrande = document.getElementById("imagenGrande");
+            const overlay = document.querySelector(".overlay");
+            imagenGrande.src = this.src;
+            imagenGrande.style.display = "block";
+            overlay.style.display = "block";
+        });
+    });
+
+    document.querySelector(".overlay").addEventListener("click", function() {
+        document.getElementById("imagenGrande").style.display = "none";
+        this.style.display = "none";
+    });
+    </script>
+</head>
+<body>
+
+    <div class="header">
+        <h1>✨ ¡Feliz Día del Amor y la Amistad! ✨</h1>
+        <p>Y sobre todo de mucho amor.</p>
+    </div>
+
+    <div class="flor-container"></div>
+  <div class="corazon-container"></div>
+  <div class="brillo-container"></div>
+
+  <div class="seccion pastel-orange">
+    <h2>Cosas que te gustan</h2>
+    <div class="carrusel-container">
+        <div class="carrusel">
+            <img src="img/0x1900-000000-80-0-0.jpg" alt="Twilight">
+            <img src="img/16073a2263ae3ed41e64ce85e87561c2.jpg" alt="Steven">
+            <img src="img/depositphotos_97746030-stock-illustration-girl-cooking-soup-with-cookbook.jpg" alt="Rainbow">
+            <img src="img/e0bd1c4b981d2c64563f3261d71e33537d6537a5e2db3eeaa80f3ced6c391625.jpg" alt="Garnet">
+            <img src="img/milka_oreo.webp" alt="Imagen 5">
+            <img src="img/pompompurin-sanrio-personajes.webp" alt="Imagen 6">
+            <img src="img/sushi-japanese-plate-2853382-1024x640.jpg" alt="Imagen 7">
+        </div>
+    </div>
+</div>
+
+<div class="overlay"></div>
+<img class="imagen-ampliada" id="imagenGrande" src="" alt="Imagen Ampliada">
+
+    <div class="cont">
+        <div class="carta" onclick="abrirCarta()">
+            <div class="carta-cerrada">
+                💌 Haz clic para abrir
+            </div>
+            <div class="carta-abierta">
+                <p>Mi amor.<br>
+                    En este día especial quiero decirte lo mucho que te amo. <br>
+                    Puedo ser muy despistado y hacerte conocer el verdadero significado de la paciencia, pero eso no significa que no te ame. <br>
+                    Soy más duro que una piedra, pero esta piedra te ama muchísimo y quiere que en un futuro estemos juntos sin importar lo bruto que yo sea.<br>
+                    En verdad no quisiera perderte.
+                    <br> Con amor, Kevin.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="seccion pastel-purple">
+        <h2>Que este día esté lleno de:</h2>
+        <ul>
+            <li>❤️ Momentos mágicos</li>
+            <li>💎 Aventuras emocionantes</li>
+            <li>🦄 Risas compartidas</li>
+        </ul>
+    </div>
+
+</body>
+</html>
